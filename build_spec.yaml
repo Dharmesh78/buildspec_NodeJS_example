@@ -11,6 +11,7 @@ steps:
     name: "Build NodeJS app"
     timeoutInSeconds: 600
     command: |
+      yum install -y oracle-nodejs-release-el7 oracle-release-el7
       yum install nodejs
       npm -version
       npm install --global pkg
