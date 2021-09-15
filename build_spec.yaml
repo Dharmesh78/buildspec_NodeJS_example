@@ -16,6 +16,7 @@ steps:
       npm -version
       npm install --global pkg
       pkg app.js
+      ls -la
       echo "build finished.."
 
 outputArtifacts:
