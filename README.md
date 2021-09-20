@@ -1,6 +1,6 @@
 # Build Spec File Example using nodeJS web application and Creating an executable file
 
-This is an example of a golang web application and creating an executable file. With the [OCI DevOps service](https://www.oracle.com/devops/devops-service/) and this project, you'll be able to build this application,store the executable file in [OCI Artifact Registry.](https://docs.oracle.com/en-us/iaas/artifacts/using/overview.htm)
+This is an example of a nodejs web application and creating an executable file. With the [OCI DevOps service](https://www.oracle.com/devops/devops-service/) and this project, you'll be able to build this application,store the executable file in [OCI Artifact Registry.](https://docs.oracle.com/en-us/iaas/artifacts/using/overview.htm)
 
 
 ## Building the application locally
@@ -15,7 +15,7 @@ cd examples/nodejs_example
 
 ### Install and run the application
 
-1. Install golang on your system: 
+1. Install nodejs on your system: 
     ```yum install -y oracle-nodejs-release-el7 oracle-release-el7```
 2. Check that path is set properly by displaying version:
     ```npm -version```
