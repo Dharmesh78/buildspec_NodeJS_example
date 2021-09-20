@@ -17,7 +17,7 @@ steps:
       pkg app.js
       ls -la
       echo "build finished.."
-
+      
 outputArtifacts:
   - name: NodeJSAppArtifact
     type: BINARY
