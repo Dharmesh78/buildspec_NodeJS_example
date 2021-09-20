@@ -10,23 +10,22 @@ The first step to get started is to download the repository to your local worksp
 
 ```shell
 git clone git@github.com:dlcbld/BuildSpecSampleFiles.git
-cd examples/golang_webapp_example
+cd examples/nodejs_example
 ```
 
 ### Install and run the application
 
-1. Install golang on your system: https://golang.org/
-2. Set the environment path variables
-    ```export PATH="/usr/local/go/bin:$PATH"```
-    ```export GOPATH="/usr/local/go"```
-    ```export PATH="$GOPATH/bin:$PATH"```
-3. Check that path is set properly by displaying version:
-    ```go version```
-4. Build the golang web application: 
+1. Install golang on your system: 
+    ```yum install -y oracle-nodejs-release-el7 oracle-release-el7```
+2. Check that path is set properly by displaying version:
+    ```npm -version```
+3. Install the pkg library
+    ```npm install --global pkg```
+4. Package the nodejs web application file alongwith necessary modules using following command: 
 
-   ```go build -o golangWebApp main.go```
+   ```pkg app.js```
 5. Run the app:
-    ```./golangWebApp```
+    ```./app-macos```
 
 ## Building the application in OCI DevOps
 Now that you've seen you can locally build this app, let's try this out through OCI DevOps Build service.
@@ -57,20 +56,20 @@ Create a [Artifact Registry repository](https://docs.oracle.com/en-us/iaas/artif
 
 ### Create a DevOps Artifact for your artifact repository
 Create a DevOps Artifact to point to the Artifact Registry repository location you just created above. Enter the information for the Artifact location:
-1. Name: `myGoAppArtifact`
+1. Name: `myNodeJSAppArtifact`
 2. Type: General Artifact
 3. Artifact source: Artifact registry Repository
     Select your Artifact Registry repository created in previous step.
 4. Artifact Location: Set custom location
-4. Path: `REGION/TENANCY-NAMESPACE/myGoWebAppArtifact`
+4. Path: `REGION/TENANCY-NAMESPACE/myNodeJSAppArtifact`
 1. Replace parameters: Yes
 ### Add a Deliver Artifacts stage
-Let's add a **Deliver Artifacts** stage to your Build Pipeline to deliver the `golangWebApp` executable file to an OCI repository.
+Let's add a **Deliver Artifacts** stage to your Build Pipeline to deliver the `app-macos` executable file to an OCI repository.
 The Deliver Artifacts stage **maps** the ouput Artifacts from the Managed Build stage with the version to deliver to a DevOps Artifact resource, and then to the OCI repository.
 Add a **Deliver Artifacts** stage to your Build Pipeline after the **Managed Build** stage. To configure this stage:
 1. In your Deliver Artifacts stage, choose `Select Artifact`
-2. From the list of artifacts select the `myGoAppArtifact` artifact that you created above
-3. In the next section, you'll assign the  container image outputArtifact from the `build_spec.yaml` to the DevOps project artifact. For the "Build config/result Artifact name" enter: `goWebAppArtifact`
+2. From the list of artifacts select the `myNodeJSAppArtifact` artifact that you created above
+3. In the next section, you'll assign the  container image outputArtifact from the `build_spec.yaml` to the DevOps project artifact. For the "Build config/result Artifact name" enter: `NodeJSAppArtifact`
 
 
 ### Run your Build in OCI DevOps
